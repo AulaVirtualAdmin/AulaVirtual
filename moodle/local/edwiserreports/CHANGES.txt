@@ -1,0 +1,242 @@
+# v 2.4.0
+
+### Features
+* Added compatibility to Moodle 4.2 
+* Added support to Remui theme v2.
+
+### Fixes
+* Solved courseactivities block missing data issue.
+
+# v 2.3.0
+
+### Features
+* Added support to Multilang filter plugin version 1 
+* Added support to Multilang filter plugin version 2
+* Added RTL support to plugin except charts and grahs
+* Added calendar filter for activity completion crriteria in learner course activities.
+* Option to show custom reports to below roles
+ * Manager
+ * Teacher
+ * Course Creator
+ * Non Editing Teacher
+
+# v 2.2.0
+
+### All new and improved design
+
+### Features
+* Added summary card for below reports
+ * Course Activities Summary
+ * Course Activity Completion
+ * Course Completions
+ * All Learner Summary
+ * Learner Course Progress
+ * Learner Course Activities
+* Added Breadcrumbs
+* Removed Back Button.
+
+### Tweaks
+* Optimized Teacher blocks.
+* Removed export buttons from bottom of the report and added it in ellipses icon visibled on click.
+* Rearranged Filters
+
+
+# v 2.1.0
+
+### Features
+* New Report: Course Activity Completion. Gives an idea of all grades received in all gradable activities by a course
+* Grade block pie popup. Show grade details of selected pie items in the popup table.
+* Course Progress block pie popup. Shows students' course progress in a selected range.
+* Site Overview block line popup. Shows a popup with 3 tables containing data on the selected date.
+
+### Tweaks
+* Changed Learner Course Progress report’s Status column data from Active/Suspended to Course Completion status ie. Not Yet, In Progress, Completed.
+* Added labels for every filter on all pages.
+* Added new filters on the following reports
+ * All Courses Summary
+ * Course Completion
+ * All Learner Summary
+* Transform old scheduled emails to support new filters
+
+### Fixes
+* Added multi-lang support to exported reports for direct download and send over email.
+
+
+# v 2.0.0
+
+### All new and improved design
+
+### Features
+* Added plugin-wide header tab navigation for checking all reports.
+* New names to reports
+ * Student Engagement -> All Learners Summary
+ * Grade Report -> Learner Course Activities
+ * Course Progress -> All Courses Summary
+* Added new report - Course Activities Summary.
+* Removed Learner report and added - Learner Course Progress. For both Learner and Teacher.
+* Added a dropdown to change between courses on the course completion page.
+* Added capability editing modal on the following report pages
+ * All Courses Summary
+ * Course Activities Summary
+ * Learner Course Progress
+ * Learner Course Activities
+
+### Tweaks
+* Added new columns to the All Courses Summary report. Removed range columns.
+* Added new columns to the Course Completion report. Removed the Enrolment type column.
+* Added new columns to the All Learner Summary report. Removed Assignment submitted column.
+* Added new columns to the Learner Course Activities report.
+* Improved Course Completion page loading.
+* Implemented Group restriction on teachers if access to all groups is restricted.
+* Improved exported pdf file table alignment.
+* Minor improvements.
+
+### Fixes
+* Updated Course Progress block capability to show block to Teacher.
+* Fixed row split issue in exported pdf file.
+
+
+
+# v 1.4.1
+
+### Fixed issue with Time spent on course and Course completion time field issue with custom reports.
+
+
+
+# v 1.4.0
+
+### Features
+* Custom profile field options are available in the Custom report. Supported options: Text, Date, Checkbox, Social, Dropdown.
+* Time spent on site and Time spent on the course are available in the Custom report.
+* Export format options in schedule email form. Yippie!
+-* Tabular data can be sent in PDF, Excel, or CSV.
+-* Graphical data can be sent in PDF, PNG, JPEG, or SVG. The link will be added to the email to download that report.
+
+Tweaks
+* Improved data calculation.
+* Improved insight and percentage calculation.
+
+### Fixes
+* New date logic used in insight calculation.
+* Showing unique active users in Total active user insight on the Site overview block.
+* Schedule reset button.
+
+
+
+# v 1.3.0
+
+### Features
+* Add group filter on grade, student engagement, and course progress page.
+* Introducing new date options
+-* Last 7 Days: Last 7 days excluding today.
+-* Last Week: Previous 7 days from last Saturday.
+-* Last Month: 1st to Last Day of last month.
+-* Last Year: Last Financial Year. Ex. 1st April to 31st March.
+* Now graphical blocks will be exported in PDF(Image), JPEG, PNG, and SVG format.
+* Setting to disable filtering of data for scheduled email. If disabled, unfiltered data will be sent over email.
+
+### Tweaks
+* Now Teacher can also see the course progress block.
+* Performance improvement.
+* Improvement in Time logging and Time log calculation.
+* Faster data calculation for Oracle, MSSQL, and PostgreSQL.
+
+### Fixes
+* Duplicate and Empty email validation.
+* Fixed duplicate header link issue in Moodle 4.0.
+* Deletion of Scheduled email parameters.
+
+
+
+# v 1.2.1
+
+### Tweaks
+* Added language translation for de, es, fr, pl.
+* The Course Progress table and Course Engagement table are linked with the Course Completion table.
+* Improved old log migration process.
+* Improved exported PDF data fitting.
+* Now Admin can modify Block Edit capabilities.
+
+### Features
+* The Course Engagement report is now available on Dashboard as a Block with new data values. (Removed from The Course Report page.)
+* Category manager can view all blocks. Only enrolled categories/courses are visible.
+* Added Cohort and Group filters on the following blocks:
+    * Grade block
+    * Course Activity status block
+    * Time spent on course block
+    * Course progress block
+* Added Cohort filters on the following blocks:
+    * Popular Courses block
+    * Certificate stats block
+* Teachers can filter data using groups.
+* Compatible with Moodle 4.0.
+* Compatible with MySQL, MariaDB, PostgreSQL, OracleDB and MsSQL.
+
+### Fixes
+* Improved Site Overview status table and modal data calculation.
+* Improved Course progress table and modal data calculation.
+* Validation of the Email field is scheduled email to avoid duplicate emails.
+* Fixed Grades and Course Progress block's insight calculation.
+* Student engagement table's Course timespent and Site timespent were swapped.
+
+
+
+# v 1.2.0
+
+### Tweaks
+* Now Active Users block is the Site Overview Status block
+* Now Activity Submission and Completions block is the Course Activity Status block
+* Warning on capability modal to show block for recommended users only.
+* Removed Block capabilities settings from the Plugin settings page.
+
+### Features
+* Completely redesigned UI.
+* Separated Studnet Engagement and Learner blocks.
+* Added insight cards for user
+    * Admin/Manager - New Registrations, Course Enrolments, Course Completions, Active Users
+    * Teacher - Course Enrolments, Course Completions, Activity Completions, Time Spent On Courses
+    * Student - Total Courses Enrolled, Course Completed, Activity Completed, Time Spent On Courses
+* Showing insight information on the following blocks
+    * Site Overview Status
+    * Time Spent On Site
+    * Time Spent On Course
+    * Visits On Site
+    * Course Activity Status
+    * Course Progress
+    * Grades
+* Created a common date selector for the following block
+    * Site Overview Status
+    * Time Spent On Site
+    * Time Spent On Course
+    * Visits On Site
+    * Course Activity Status
+* Added color themes for Dashboard and more details page
+
+### Fixes
+* Fixed Site Overview Status block's data calculation
+* Grade calculation on Learner more detail and Course Completion Report
+
+
+
+# v 1.1.0
+
+### Features
+* New graph: Course activity status block which shows daily Assignment submission and activities completion.
+* New block: Grade block shows Student, Course, and Activity grade categories.
+
+### Tweaks
+* Improved time logging. Now will be logged when the user leaves the page within Time-Frequency.
+* Improved date labeling of the x-axis for Active users, Student Engagement, and Learner block.
+* Improved UI of all blocks.
+* Improved data calculation based on date selection.
+* Changed line chart to Area chart.
+
+### Fixes
+* Fixed total activity count of custom reports.
+* Fixed course progress block partitioning issue.
+
+
+
+# V 1.0.0
+
+* Initial version

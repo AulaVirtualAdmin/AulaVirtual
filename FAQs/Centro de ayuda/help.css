@@ -1,0 +1,54 @@
+body{
+    background: linear-gradient(to bottom, #ffffff, #101D42); /* Cambia los colores según tus preferencias */
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+    padding: 0; /* Elimina el relleno predeterminado del cuerpo */
+   
+}
+
+
+*{
+    padding: 10px 0px;
+    margin: 5px;
+}
+
+.nav1 {
+    background-color: #101D42; /* Color de fondo de la barra de navegación */
+    padding: 10px 20px; /* Espaciado interno para los elementos de la barra */
+    border-radius: 10px;
+}
+.nav1 h2 {
+    font-family: "Montserrat", sans-serif;
+    color: #ffffff;
+    text-align: center;
+}
+
+.container {
+    margin: 0 auto; /* Esto puede ayudar a centrar el contenido principal si es necesario */
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    padding: 20px; /* Añade relleno alrededor del contenedor principal */
+    box-sizing: border-box; /* Hace que el relleno y el borde se cuenten dentro del ancho y alto total */
+}
+.container2{
+    width: 90%;
+    margin: 20px auto;
+    
+}
+
+.imagenes img{
+    /*background-color: #c6c7c9;*/
+    box-shadow: 0 0 15px -1px rgba(0, 0, 0, .3);
+    cursor: pointer;
+}
+
+.imagenes img.resaltar{
+    transition: 0.4s;
+}
+
+.imagenes img.resaltar:hover{
+    box-shadow: 0 0 15px -1px rgba(0, 0, 0, .9);
+}
+
+.finaldepagina {
+   margin: 300px;
+   padding: 0;
+}

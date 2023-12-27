@@ -1,0 +1,15 @@
+<div class="insight-wrap d-flex">
+    <label class="insight-value pr-2 theme-primary-text h3" data-oldvalue="{{{oldvalue}}}">{{{value}}}</label>
+    {{#difference}}
+        <span class=" {{rtlclass}} insight-direction d-inline-block pr-6 insight-{{#direction}}success{{/direction}}{{^direction}}danger{{/direction}}">
+            <span class="value">
+                {{#direction}}
+                    {{#pix}} uparrow, local_edwiserreports {{/pix}} {{value}}% <span class="ml-1">{{#str}} up {{/str}}</span>
+                {{/direction}}
+                {{^direction}}
+                    {{#pix}} downarrow, local_edwiserreports {{/pix}} {{value}}% <span class="ml-1">{{#str}} down {{/str}}</span>
+                {{/direction}}
+            </span>
+        </span>
+    {{/difference}}
+</div>

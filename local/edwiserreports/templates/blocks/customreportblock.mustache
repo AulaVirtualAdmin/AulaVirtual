@@ -1,0 +1,8 @@
+<div class="table-responsive">
+    <table class="table customreportdata w-full"></table>
+</div>
+{{#js}}
+require(['local_edwiserreports/blocks/customreport'], function(customReport) {
+    customReport.init('{{{id}}}', '{{{params}}}');
+});
+{{/js}}

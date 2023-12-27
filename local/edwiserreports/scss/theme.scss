@@ -1,0 +1,144 @@
+// This file contains theme dependent css.
+#page-local-edwiserreports-index {
+    // Theme RemUI styling fixes.
+    &.theme_remui {
+        #page {
+            #region-main>.card {
+                background: transparent;
+                padding: 0;
+            }
+            &>.container {
+                max-width: none;
+            }
+            #region-main {
+                padding: 0;
+            }
+        }
+    }
+    &.theme_moove {
+        .card {
+            background: transparent;
+            border: none;
+        }
+    }
+    &.theme_adaptable,
+    &.theme_fordson,
+    &.theme_boost {
+        .insight-wrap .insight-value {
+            margin: 0 !important;
+        }
+        .insight-wrap .insight-direction {
+            margin-top: 0.3rem !important;
+        }
+    }
+    &.theme_adaptable {
+        .export-options {
+            button {
+                border: 0;
+            }
+        }
+        .panel-body {
+            overflow: visible !important;
+        }
+        #liveusersblock {
+            .text-success,
+            .text-dander {
+                font-size: 1rem !important;
+            }
+        }
+    }
+    &.theme_adaptable,
+    &.theme_fordson {
+        #siteaccessblock {
+            a {
+                color: #0f6fc5;
+                text-decoration: none;
+                background-color: transparent;
+            }
+        }
+    }
+    #todaysactivityblock input.input-group-addon {
+        width: 150px;
+    }
+}
+
+.local-edwiserreports.report-page {
+    &.theme_remui {
+        .card-body {
+            background: transparent;
+            padding: 0;
+        }
+        #page-content{
+            background-color: white !important;
+        }
+    }
+    &.theme_moove {
+        #page-header {
+            display: none;
+        }
+        .card {
+            background: transparent;
+            border: none;
+        }
+    }
+    &.theme_boost {
+        #page-header {
+            display: none;
+        }
+        #region-main {
+            border: none;
+        }
+    }
+    .filter-selector .select2 {
+        width: 100% !important;
+    }
+}
+
+$padding: 1.0715rem;
+.local-edwiserreports {
+    &.theme_adaptable,
+    &.theme_fordson,
+    &.theme_moove,
+    &.theme_boost {
+        .block-cap-form {
+            .col-form-label {
+                font-size: 1.286rem !important;
+                font-weight: 400 !important;
+            }
+        }
+        .panel-header,
+        .filter-selector {
+            button.dropdown-toggle {
+                background: #fff;
+                border: 1px solid #e4eaec;
+                padding: .4rem .75rem;
+                border-radius: .215rem;
+            }
+        }
+    }
+    &.theme_fordson {
+        .row {
+            margin-right: -$padding;
+            margin-left: -$padding;
+        }
+        @for $i from 1 through 12 {
+            .col-#{$i},
+            .col-sm-#{$i},
+            .col-md-#{$i},
+            .col-lg-#{$i} {
+                padding-right: $padding;
+                padding-left: $padding;
+            }
+        }
+    }
+    &.theme_adaptable {
+        #scheduletab {
+            button.dropdown-toggle {
+                color: #333 !important;
+            }
+        }
+        .dropdown-menu a {
+            color: #526069;
+        }
+    }
+}

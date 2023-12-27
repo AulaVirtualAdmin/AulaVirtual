@@ -1,0 +1,22 @@
+a:26:{s:8:"encoding";s:25:"Codificación de archivos";s:13:"expiredaction";s:35:"Acción cuando caduca la matrícula";s:18:"expiredaction_help";s:216:"Seleccione la acción a realizar cuando finalice el periodo de matriculación del usuario. Por favor, tenga en cuenta que algunos datos de usuario y de configuración se eliminan del curso durante el proceso de baja.";s:14:"filelockedmail";s:317:"El fichero de texto empleado en matriculaciones basadas en archivo ({$a}) no puede ser eliminado por el proceso de 'cron'. Esto generalmente significa que los permisos son erróneos. Por favor, corrija los permisos para que Moodle puede eliminar el archivo, de lo contrario, podría ser procesado en varias ocasiones.";s:21:"filelockedmailsubject";s:43:"Error importante: Archivo de matriculación";s:15:"flatfile:manage";s:50:"Gestionar manualmente la matriculación de usuario";s:16:"flatfile:unenrol";s:42:"Dar de baja usuarios del curso manualmente";s:18:"flatfileenrolments";s:38:"Inscripciones de archivos planos (CSV)";s:12:"flatfilesync";s:47:"Sincronización de fichero plano de matrículas";s:8:"location";s:22:"Ubicación del archivo";s:13:"location_desc";s:118:"Especifique la ruta completa al archivo de matriculaciones. El archivo se borra automáticamente después del proceso.";s:11:"notifyadmin";s:26:"Notificar al administrador";s:14:"notifyenrolled";s:37:"Notificar a los usuaruos matriculados";s:14:"notifyenroller";s:56:"Notificar al usuario responsable de las matriculaciones.";s:34:"messageprovider:flatfile_enrolment";s:45:"Mensajes de archivos planos de matriculación";s:7:"mapping";s:31:"Mapeo de archivos planos de rol";s:10:"pluginname";s:19:"Archivo plano (CSV)";s:15:"pluginname_desc";s:896:"Este método comprobará habitualmente y procesará un archivo de texto con un formato especial en la ubicación que usted especifique. El archivo es un archivo separado por comas que debe tener cuatro o seis campos por línea:
+
+<pre class="informationbox">
+* operation, role, idnumber(user), idnumber(course) [, starttime, endtime] donde:
+
+* operation = add | del
+* role = student | teacher | teacheredit
+* idnumber(user) = idnumber in the user table NB not id
+* idnumber(course) = idnumber in the course table NB not id
+* starttime = start time (in seconds since epoch) - optional
+* endtime = end time (in seconds since epoch) - optional </pre>
+
+Será similar algo así:
+
+ <pre class="informationbox">
+   add, student, 5, CF101
+   add, teacher, 6, CF101
+   add, teacheredit, 7, CF101
+   del, student, 8, CF101
+   del, student, 17, CF101
+   add, student, 21, CF101, 1091115000, 1091215000
+</pre>";s:31:"privacy:metadata:enrol_flatfile";s:155:"El complemento de inscripción de archivos planos (CSV) puede almacenar datos personales relacionados con inscripciones futuras en la tabla enrol_flatfile.";s:38:"privacy:metadata:enrol_flatfile:action";s:57:"La acción de inscripción esperada en la fecha indicada.";s:40:"privacy:metadata:enrol_flatfile:courseid";s:55:"El ID del curso con el que está asociada la matrícula";s:38:"privacy:metadata:enrol_flatfile:roleid";s:39:"El ID del rol para asignar o desasignar";s:41:"privacy:metadata:enrol_flatfile:timestart";s:42:"El momento en el que empieza la matrícula";s:39:"privacy:metadata:enrol_flatfile:timeend";s:43:"El momento en el que finaliza la matrícula";s:44:"privacy:metadata:enrol_flatfile:timemodified";s:48:"El momento en el que la matrícula es modificada";s:38:"privacy:metadata:enrol_flatfile:userid";s:50:"El ID del usuario asociado a la asignación de rol";}

@@ -1,0 +1,13 @@
+
+/**
+ * Plugin administration pages js.
+ *
+ * @package     local_edwiserreports
+ * @copyright   2021 wisdmlabs <support@wisdmlabs.com>
+ * @author      Yogesh Shirsath
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+define('local_edwiserreports/settings',['jquery'],function($){return{init:function(){var SELECTORS={TAB:'.edwiserreportstab',ACTIVE:'[name="activetab"]',LICENSE:'.edwiserreportstab-license',SUBMITBUTTON:'.settingsform button[type="submit"]'};function checkLicenseTab(){if($(SELECTORS.TAB+'.active').is(SELECTORS.LICENSE)){$(SELECTORS.SUBMITBUTTON).hide()}else{$(SELECTORS.SUBMITBUTTON).show()}
+$(SELECTORS.ACTIVE).val($(SELECTORS.TAB+'.active').attr('href').replace('#',''))}
+$(document).ready(function(){window.onbeforeunload=null;if($(SELECTORS.TAB).length!==0){$('a[data-toggle="tab"]').on('shown.bs.tab',function(){checkLicenseTab()});checkLicenseTab()}
+if($('[name="theme-radio"]').length!==0){$('[name="theme-radio"][value="'+$('#id_s_local_edwiserreports_theme').hide().val()+'"]').prop('checked',!0);$('[name="theme-radio"]').on('change',function(){$('#id_s_local_edwiserreports_theme').val($('[name="theme-radio"]:checked').val())})}})}}})

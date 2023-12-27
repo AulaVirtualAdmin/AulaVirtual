@@ -1,0 +1,11 @@
+.flatpickr-calendar.arrowTop:before,
+.flatpickr-calendar.arrowTop:after,
+.flatpickr-calendar.arrowBottom:before,
+.flatpickr-calendar.arrowBottom:after {
+    display: none;
+}
+
+.flatpickr-wrapper {
+    position: relative;
+    max-width: 150px;
+}

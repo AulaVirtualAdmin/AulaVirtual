@@ -1,0 +1,1 @@
+a:4:{s:10:"pluginname";s:25:"Ver nombre de la pregunta";s:16:"privacy:metadata";s:104:"El complemento del banco de preguntas de ver el nombre de la pregunta no almacena ningún dato personal.";s:23:"edit_question_name_hint";s:31:"Editar el nombre de la pregunta";s:24:"edit_question_name_label";s:27:"Nuevo valor para {$a->name}";}

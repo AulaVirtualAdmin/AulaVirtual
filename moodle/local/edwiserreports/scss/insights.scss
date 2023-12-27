@@ -1,0 +1,185 @@
+/* stylelint-disable declaration-no-important */
+
+.top-insights {
+    width: 99%;
+    z-index: 3;
+    .row {
+        margin: 0 -0.5rem;
+        @media (min-width: 768px) and (max-width: 1199px) {
+            margin: 0 -0.3rem;
+        }
+        @media (max-width: 767px) {
+            margin: 0;
+        }
+    }
+    &.editing {
+        .insight {
+            margin-top: 2.428rem;
+            .card-editing {
+                .fa {
+                    transition: all 0.3s ease-in-out;
+                    transform: unset;
+                    @media (max-width: 767px) {
+                        &.fa-arrow-right {
+                            transform: rotate(90deg);
+                        }
+                        &.fa-arrow-left {
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
+            }
+            &:first-child {
+                .card-editing {
+                    .move-left {
+                        display: none !important;
+                    }
+                }
+            }
+            &:nth-last-child(2) {
+                .card-editing .move-right {
+                    display: none !important;
+                }
+            }
+            &:nth-child(n+5) {
+                display: none !important;
+            }
+        }
+    }
+    .insight {
+        @media (max-width: 767px) {
+            padding: 0;
+        }
+        &:first-child {
+            margin-left: auto;
+        }
+        &:last-child {
+            margin-right: auto;
+        }
+        &.add-insight {
+            .insight-wrapper {
+                height: 100%;
+                background: transparent;
+                box-shadow: none;
+                border: 1px dashed rgba(0, 0, 0, 0.5);
+                .dropdown {
+                    height: 100%;
+                    .dropdown-toggle {
+                        height: 100%;
+                        width: 100%;
+                        &:after {
+                            display: none;
+                        }
+                        .fa {
+                            font-size: 2rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .insight-wrapper {
+        min-height: 10rem;
+        box-shadow: 0 7px 14px 0 rgba(59, 65, 94, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
+        background: white;
+        height: 100%;
+        .insight-image {
+            .icon {
+                width: 3rem;
+                height: 3rem;
+            }
+        }
+        .insight-title {
+            font-size: 0.857rem;
+            font-weight: 700;
+            line-height: 1.142rem;
+            color: #999999;
+            text-transform: uppercase;
+            margin-top: 1.287rem;
+        }
+        position: relative;
+        .card-editing {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translateY(-100%);
+            z-index: 0;
+        }
+    }
+}
+
+
+/* Common */
+
+.insight-wrap {
+    align-items: center;
+    flex-wrap: wrap;
+    .insight-value {
+        font-weight: 600;
+        white-space: nowrap;
+        font-size: 1.57rem;
+        line-height: 2.14rem;
+        margin-bottom: 0;
+        margin-top: 0;
+        margin-right: 0.3rem;
+    }
+    .insight-direction {
+        margin-top: 0;
+        font-size: 1.7rem;
+        vertical-align: bottom;
+        .value {
+            display: flex;
+            position: relative;
+            font-weight: 600;
+            border: 1px solid #E5E5E5;
+            border-radius: 2rem;
+            font-size: 0.857rem;
+            line-height: 1.17rem;
+            margin-right: 0.5rem;
+            padding-right: 0.5rem;
+            align-items: center;
+            .icon {
+                width: 1.285rem;
+                height: 1.285rem;
+                margin-right: 0.5rem !important;
+            }
+            span {
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+
+/* BLock insights */
+
+.insight-card {
+    position: relative;
+    display: flex;
+    box-shadow: 0 10px 15px 0 rgba(59, 65, 94, 0.1), 0 0 30px 0 rgba(0, 0, 0, 0.07);
+    .insight-body {
+        display: flex;
+        align-items: center;
+    }
+    .insight-title {
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+    .insight-details {
+        position: relative;
+        display: flex;
+        align-items: center;
+        &::before {
+            content: " ";
+            position: absolute;
+            left: 0;
+            top: 15%;
+            bottom: 15%;
+            width: 1px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+    }
+}

@@ -1,0 +1,547 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    Edwiser Reports Pro
+    @package   local_edwiserreports
+    @copyright (c) 2022 WisdmLabs (https://wisdmlabs.com/)
+    @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+
+}}
+{{!
+    @template local_edwiserreports/edwiserreports
+
+    Display the activity navigation for all activities in a course
+
+    Context variables required for this template:
+
+    Example context (json):
+    {
+    }
+}}
+<div class="mx-4">
+    {{> local_edwiserreports/navigation }}
+</div>
+{{{notice}}}
+<div class="edwiserreports-header position-relative mb-5 mx-4">
+    
+    <div class="edwiserreport-title theme-1-color text-left">
+        <h2 class="m-0">{{#str}} dashboard, local_edwiserreports {{/str}}</h2>
+        <label class="h5 selected-period theme-1-bg text-white">{{#str}} loading, local_edwiserreports {{/str}}</label>
+        <button class="" id="button_download_report" onclick="descargarReporte()"><a id="download_report">Descargar reporte</a></button>
+    </div>
+    <div class="ml-auto filter-wrapper text-right mt-2">
+        <div class="row">
+            <div class="filter-selector col-12 d-inline-block ml-1">
+                <label>{{#str}} date, local_edwiserreports {{/str}}</label>
+                <button type="button" class="btn dropdown-toggle text-left edwiserreports-calendar" data-toggle="dropdown" aria-expanded="false">
+                    {{#str}} last7days, local_edwiserreports {{/str}}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="filter-dropdown" role="menu">
+                    <div class="dropdown-calendar"></div>
+                    <div class="dropdown-body">
+                        <a class="dropdown-item active" role="menuitem" data-value="last7days" href="javascript:void(0)">{{#str}} last7days, local_edwiserreports {{/str}}</a>
+                        <a class="dropdown-item" role="menuitem" data-value="weekly" href="javascript:void(0)">{{#str}} lastweek, local_edwiserreports {{/str}}</a>
+                        <a class="dropdown-item" role="menuitem" data-value="monthly" href="javascript:void(0)">{{#str}} lastmonth, local_edwiserreports {{/str}}</a>
+                        <a class="dropdown-item" role="menuitem" data-value="yearly" href="javascript:void(0)">{{#str}} lastyear, local_edwiserreports {{/str}}</a>
+                        <a class="dropdown-item custom" role="menuitem" href="javascript:void(0)">
+                            <input class="border-0 p-0 bg-transparent flatpickr" placeholder="{{#str}} customdate, local_edwiserreports {{/str}}" 0="data-input" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{# topinsights }}
+    {{> local_edwiserreports/insights/insights }}
+{{/ topinsights }}
+<div id="wdm-edwiserreports" class="row mx-0" data-editing="{{ editing }}" data-contextid="{{contextid}}">
+    {{# canmanagecustomreports }}
+        <div class="col-12 mb-5">
+            <a href="{{customreportseditlink}}" class="btn theme-primary-bg text-white pull-right">
+                <i class="icon fa fa-plus fa-fw " aria-hidden="true"></i>
+                {{#str}} createcustomreports, local_edwiserreports {{/str}}
+            </a>
+        </div>
+    {{/ canmanagecustomreports }}
+    {{# blocks }}
+        <div class="{{{extraclasses}}} mb-5 edwiserReport-block {{# hiddenblock }} block-hidden {{/ hiddenblock}}" data-block="{{id}}">
+            <div id="{{id}}" data-sesskey="{{sesskey}}" data-blockname="{{name}}">
+                <div class="panel {{# morelink }}has-footer{{/ morelink }} m-0 pt-0 px-0 pb-3">
+                    <div class="panel-header p-3 d-flex">
+                        <div class="panel-title theme-1-text p-0">
+                            <strong class="mb-1">
+                                {{{name}}}
+                                <a href="javascript:void(0)" data-title="{{info}}" class="small panel-help" data-toggle="tooltip" data-trigger="hover" data-placement="top">
+                                    {{{infoicon}}}
+                                </a>
+                            </strong>
+                        </div>
+                        <div class="row p-0 ml-auto mr-0">
+                            {{# hasmenu }}
+                                <div class="dropdown export-options">
+                                    <button role="button" type="button" class="btn">
+                                        <i class="fa fa-ellipsis-v theme-primary-text"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right" style="">
+                                        <!-- item-->
+                                        {{# downloadlinks }}
+                                            {{> local_edwiserreports/download_buttons }}
+                                        {{/ downloadlinks }}
+                                    </div>
+                                </div>
+                            {{/ hasmenu }}
+                            {{# editopt }}
+                                {{> local_edwiserreports/blocksettingdropdown }}
+                            {{/ editopt }}
+                        </div>
+                    </div>
+                    <div class="panel-body px-3 py-0">
+                        <div class="block-filters position-relative pb-1">{{{ filters }}}</div>
+                        {{{ blockview }}}
+                    </div>
+                    {{# morelink }}
+                        <div class="panel-footer p-3">
+                            <a href="{{{.}}}" class="btn theme-primary-text theme-primary-border ml-auto">{{#str}} viewdetails, local_edwiserreports {{/str}}</a>
+                        </div>
+                    {{/ morelink }}
+                </div>
+            </div>
+        </div>
+    {{/ blocks }}
+    {{# canmanagecustomreports }}
+        <div class="col-12 mb-5">
+            <a href="{{customreportseditlink}}" class="btn theme-primary-bg text-white pull-right">
+                <i class="icon fa fa-plus fa-fw " aria-hidden="true"></i>
+                {{#str}} createcustomreports, local_edwiserreports {{/str}}
+            </a>
+        </div>
+    {{/ canmanagecustomreports }}
+</div>
+
+{{#js}}
+M.local_edwiserreports = {
+    secret: '{{{secret}}}'
+};
+{{/js}}
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.js">
+/* Importacion de libreria que genera png */
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.js">
+/* Importacion de libreria que genera PDF */
+</script>
+
+<script>
+
+async function descargarReporte(){
+
+    /*var grafico1 = await html2canvas(document.querySelector("#apexchartsactiveusers")).then((canvas) => {
+        // document.body.appendChild(canvas);
+        return canvas;
+    });*/
+    var ancho_grafico1 = 0;
+    var alto_grafico1 = 0;
+    var ancho_grafico2 = 0;
+    var alto_grafico2= 0;
+    var ancho_grafico3 = 0;
+    var alto_grafico3 = 0;
+    var ancho_grafico4 = 0;
+    var alto_grafico4 = 0;
+    var ancho_grafico_notas = 0;
+    var alto_grafico_notas = 0;
+    var ancho_detalle_notas = 0;
+    var alto_detalle_notas = 0;
+    var ancho_alumno = 0;
+    var alto_alumno = 0;    
+
+    var grafico1 = await html2canvas(document.querySelector("#apexchartsactiveusers")).then((canvas) => {
+        ancho_grafico1 = document.querySelector("#apexchartsactiveusers").offsetWidth;
+        alto_grafico1 = document.querySelector("#apexchartsactiveusers").offsetHeight;
+        return canvas;
+     });
+
+    var grafico2 = await html2canvas(document.querySelector("#apexchartsvisitsonsite")).then((canvas) => {
+        // document.body.appendChild(canvas);
+        ancho_grafico2 = document.querySelector("#apexchartsvisitsonsite").offsetWidth;
+        alto_grafico2 = document.querySelector("#apexchartsvisitsonsite").offsetHeight;
+        return canvas;
+    });
+
+    var grafico3 = await html2canvas(document.querySelector("#apexchartstimespentonsite")).then((canvas) => {
+        // document.body.appendChild(canvas);
+        ancho_grafico3 = document.querySelector("#apexchartstimespentonsite").offsetWidth;
+        alto_grafico3 = document.querySelector("#apexchartstimespentonsite").offsetHeight;
+        return canvas;
+    });
+
+     var grafico4 = await html2canvas(document.querySelector("#apexchartstimespentoncourse")).then((canvas) => {
+        // document.body.appendChild(canvas);
+        ancho_grafico4 = document.querySelector("#apexchartstimespentoncourse").offsetWidth;
+        alto_grafico4 = document.querySelector("#apexchartstimespentoncourse").offsetHeight;
+        return canvas;
+    });
+
+    /*
+     var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+    var img = document.getElementById("myImage");
+        
+    context.drawImage(img, 10, 10, 
+        300, 175, 0, 0, 100, 175);
+    */
+
+
+    // Este bloque crea un elemento canvas dentro del div #apexchartsgrade y lo dimensiona para recortar la captura del grafico
+    var divNotas = document.getElementById('apexchartsgrade');
+    var nuevoCanvas = document.createElement('canvas');
+    nuevoCanvas.id = 'canvasNotas'
+
+    // Dimension del canvas
+    nuevoCanvas.width = 250;
+    nuevoCanvas.height = 250;
+
+    var contexto = nuevoCanvas.getContext('2d', {willReadFrequently: true});
+
+     await html2canvas(document.querySelector('#apexchartsgrade')).then((canvas) => {
+        
+        // Modificar para que quede bien
+        contexto.drawImage(canvas, 0, 0, canvas.width * 0.7, canvas.height, 0, 0, nuevoCanvas.width, nuevoCanvas.height);
+
+        // Agregar el canvas recortado al nuevo contenedor
+        divNotas.appendChild(nuevoCanvas);
+    });
+
+    var grafico_notas = await html2canvas(document.querySelector('#canvasNotas')).then((canvas) => {
+        // document.body.appendChild(canvas);
+        ancho_grafico_notas = document.querySelector('#canvasNotas').offsetWidth;
+        alto_grafico_notas = document.querySelector('#canvasNotas').offsetHeight;
+        return canvas;
+    });
+
+    
+    // Oculta el canvas una vez capturado el grafico recortado
+    document.getElementById('canvasNotas').remove();
+
+    var detalle_notas = await html2canvas(document.querySelector(".apexcharts-legend.apexcharts-align-center.position-right")).then((canvas) => {
+        // document.body.appendChild(canvas);
+        ancho_detalle_notas = document.querySelector(".apexcharts-legend.apexcharts-align-center.position-right").offsetWidth;
+        alto_detalle_notas = document.querySelector(".apexcharts-legend.apexcharts-align-center.position-right").offsetHeight;
+        return canvas;
+    });
+
+    //querySelector('.apexcharts-legend.apexcharts-align-center.position-right')
+
+    var alumno = await html2canvas(document.querySelector(".select2-selection__rendered")).then((canvas) => {
+        // document.body.appendChild(canvas);
+        ancho_alumno = document.querySelector(".select2-selection__rendered").offsetWidth;
+        alto_alumno = document.querySelector(".select2-selection__rendered").offsetHeight;
+        return canvas;
+    });
+
+    var dimensiones_imagenes = {
+        grafico1: {
+            ancho: ancho_grafico1 > 900 ? ancho_grafico1*0.4 : ancho_grafico1*0.6,
+            alto: ancho_grafico1 > 900 ? alto_grafico1*0.4 : alto_grafico1*0.6,
+        },
+        grafico2: {
+            ancho: ancho_grafico2 > 900 ? ancho_grafico2*0.4 : ancho_grafico2*0.4,
+            alto: alto_grafico2 > 900 ? alto_grafico2*0.4 : alto_grafico2*0.4,
+        },
+        grafico3: {
+            ancho: ancho_grafico3 > 900 ? ancho_grafico3*0.4 : ancho_grafico3*0.4,
+            alto: alto_grafico3 > 900 ? alto_grafico3*0.4 : alto_grafico3*0.4,
+        },
+        grafico4: {
+            ancho: ancho_grafico4 > 900 ? ancho_grafico4*0.4 : ancho_grafico4*0.6,
+            alto: alto_grafico4 > 900 ? alto_grafico4*0.4 : alto_grafico4*0.6,
+        },
+        grafico_notas: {
+            ancho: ancho_grafico_notas > 900 ? ancho_grafico_notas*0.4 : ancho_grafico_notas*1.3,
+            alto: alto_grafico_notas,
+        },
+        detalle_notas: {
+            ancho: ancho_detalle_notas,
+            alto: alto_detalle_notas,
+        },
+        alumno: {
+            ancho: ancho_alumno, 
+            alto: alto_alumno,
+        }
+    }
+
+    generarPDF(grafico1, grafico2, grafico3, grafico4, grafico_notas, detalle_notas, alumno, dimensiones_imagenes);
+    
+    /*alert('funcion OK');
+     Llamar a los metodos para capturar pantalla y luego generar PDF. Antes se deben importar las librerias JS */
+
+}
+
+async function generarPDF(grafico1, grafico2, grafico3, grafico4, grafico_notas, detalle_notas, alumno, dimensiones_imagenes) {
+    // No olvidar de poner grafico3, grafico4, etc en el parentesis de generarPDF
+
+    console.log("Inicio de función");
+    const grafico1_base64 = grafico1.toDataURL("image/png;base64").split(';base64,').pop();
+    const grafico2_base64 = grafico2.toDataURL("image/png;base64").split(';base64,').pop();
+    const grafico3_base64 = grafico3.toDataURL("image/png;base64").split(';base64,').pop();
+    const grafico4_base64 = grafico4.toDataURL("image/png;base64").split(';base64,').pop();
+    const grafico_notas_base64 = grafico_notas.toDataURL("image/png;base64").split(';base64,').pop();
+    const detalle_notas_base64 = detalle_notas.toDataURL("image/png;base64").split(';base64,').pop();
+    const alumno_base64 = alumno.toDataURL("image/png;base64").split(';base64,').pop();
+
+    
+    const grafico1_bytes = Uint8Array.from(atob(grafico1_base64), c => c.charCodeAt(0));
+    const grafico2_bytes = Uint8Array.from(atob(grafico2_base64), c => c.charCodeAt(0));
+    const grafico3_bytes = Uint8Array.from(atob(grafico3_base64), c => c.charCodeAt(0));
+    const grafico4_bytes = Uint8Array.from(atob(grafico4_base64), c => c.charCodeAt(0));
+    const grafico_notas_bytes = Uint8Array.from(atob(grafico_notas_base64), c => c.charCodeAt(0));
+    const detalle_notas_bytes = Uint8Array.from(atob(detalle_notas_base64), c => c.charCodeAt(0));
+    const alumno_bytes = Uint8Array.from(atob(alumno_base64), c => c.charCodeAt(0));
+
+    const encabezado = 'Reporte de alumno';
+    const titulo0 = "Usuarios activos del aula";
+    const titulog1 = 'Promedio De Notas (%)';
+    const titulog2 = 'Tiempo Dedicado a sus Cursos';
+    const titulog3 = 'Tiempo Permanecido en el Cursos';
+    const titulog4 = 'Visitas Promedio del sitio (en un día)';
+    const titulog5 = 'Titulo grafico 5';
+
+
+    // Crea objeto PDF
+    const pdfDoc = await PDFLib.PDFDocument.create();
+
+    const page = pdfDoc.addPage([595.28, 841.89]); // Tamaño de PDF A4 (1 mm = 2.83465 puntos)
+    const { width, height } = page.getSize();
+    const fontSize = 15;
+    const Toffset = 790;
+    const Toffset0 = 740;
+    const T1offset = 465;
+    const T2offset = 465;
+    const T3offset = 215;
+    const T4offset = 215;
+    const T5offset = 450;
+    const squareSize = 200;
+
+    const helveticaFont = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica); // Estilo de letra
+    const helveticaBoldFont = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+
+    const textWidth = helveticaFont.widthOfTextAtSize(encabezado, fontSize);
+    const textWidth0 = helveticaFont.widthOfTextAtSize(titulo0, fontSize);
+    const textWidth1 = helveticaFont.widthOfTextAtSize(titulog1, fontSize);
+    const textWidth2 = helveticaFont.widthOfTextAtSize(titulog2, fontSize);
+    const textWidth3 = helveticaFont.widthOfTextAtSize(titulog3, fontSize);
+    const textWidth4 = helveticaFont.widthOfTextAtSize(titulog4, fontSize);
+    const textWidth5 = helveticaFont.widthOfTextAtSize(titulog5, fontSize);
+    
+    // Crear una imagen a partir de los bytes
+    const imagen_grafico1 = await pdfDoc.embedPng(grafico1_bytes);
+    const imagen_grafico2 = await pdfDoc.embedPng(grafico2_bytes);
+    const imagen_grafico3 = await pdfDoc.embedPng(grafico3_bytes);
+    const imagen_grafico4 = await pdfDoc.embedPng(grafico4_bytes);
+    const imagen_grafico_notas = await pdfDoc.embedPng(grafico_notas_bytes);
+    const imagen_detalle_notas = await pdfDoc.embedPng(detalle_notas_bytes);
+    const imagen_alumno = await pdfDoc.embedPng(alumno_bytes);
+
+    //const grafico1_tamano = imagen_grafico1.scale(0.6); // Puedes ajustar la escala según lo necesites
+    //const grafico2_tamano = imagen_grafico2.scale(0.5); // Puedes ajustar la escala según lo necesites
+    //const grafico3_tamano = imagen_grafico3.scale(0.5); // Puedes ajustar la escala según lo necesites
+    //const grafico4_tamano = imagen_grafico4.scale(0.5); // Puedes ajustar la escala según lo necesites
+    /*const grafico5_tamano = imagen_grafico5.scale(0.5); // Puedes ajustar la escala según lo necesites*/
+    //const alumno_tamano = imagen_alumno.scale(0.9); // Puedes ajustar la escala según lo necesites
+    
+    /*// Inserta las imagenes
+    page.drawImage(imagen_grafico1, {
+    x: 50, // Coordenada x donde se colocará la imagen
+    y: height -280, // Coordenada y donde se colocará la imagen
+    width: grafico1_tamano.width,
+    height: grafico1_tamano.height,
+    });*/
+
+    page.drawImage(imagen_grafico1, {
+    x: 50, // Coordenada x donde se colocará la imagen
+    y: height - 320, // Coordenada y donde se colocará la imagen
+    width: dimensiones_imagenes.grafico1.ancho,
+    height: dimensiones_imagenes.grafico1.alto,
+    });
+
+
+    page.drawImage(imagen_grafico_notas, {
+    x: 0, // Coordenada x donde se colocará la imagen
+    y: height - (dimensiones_imagenes.grafico_notas.ancho > 900 ? 400 : 550), // Coordenada y donde se colocará la imagen
+    width: dimensiones_imagenes.grafico_notas.ancho > 900 ? dimensiones_imagenes.grafico_notas.ancho*0.4 : dimensiones_imagenes.grafico_notas.ancho*0.6,
+    height: dimensiones_imagenes.grafico_notas.ancho > 900 ? dimensiones_imagenes.grafico_notas.alto*0.4 : dimensiones_imagenes.grafico_notas.alto*0.6,
+    });
+
+    page.drawImage(imagen_detalle_notas, {
+    x: 180, // Coordenada x donde se colocará la imagen
+    y: height - (dimensiones_imagenes.detalle_notas.ancho > 900 ? 550 : 535), // Coordenada y donde se colocará la imagen
+    width: dimensiones_imagenes.detalle_notas.ancho > 900 ? dimensiones_imagenes.detalle_notas.ancho*0.4 : dimensiones_imagenes.detalle_notas.ancho*0.6,
+    height: dimensiones_imagenes.detalle_notas.ancho > 900 ? dimensiones_imagenes.detalle_notas.alto*0.4 : dimensiones_imagenes.detalle_notas.alto*0.6,
+    });
+
+    page.drawImage(imagen_grafico4, {
+    x: 290, // Coordenada x donde se colocará la imagen
+    y: height -570, // Coordenada y donde se colocará la imagen
+    width: dimensiones_imagenes.grafico4.ancho > 900 ? dimensiones_imagenes.grafico4.ancho*0.4 : dimensiones_imagenes.grafico4.ancho*0.7,
+    height: dimensiones_imagenes.grafico4.ancho > 900 ? dimensiones_imagenes.grafico4.alto*0.4 : dimensiones_imagenes.grafico4.alto*0.7,
+    });
+
+    page.drawImage(imagen_grafico3, {
+    x: 20, // Coordenada x donde se colocará la imagen
+    y: height -800, // Coordenada y donde se colocará la imagen
+    width: dimensiones_imagenes.grafico3.ancho, 
+    height: dimensiones_imagenes.grafico3.alto,
+    });
+
+    page.drawImage(imagen_grafico2, {
+    x: 300, // Coordenada x donde se colocará la imagen
+    y: height -800, // Coordenada y donde se colocará la imagen
+    width: dimensiones_imagenes.grafico2.ancho,
+    height: dimensiones_imagenes.grafico2.alto,
+    });
+
+    page.drawImage(imagen_alumno, {
+    x: 450, // Coordenada x donde se colocará la imagen
+    y: height -43, // Coordenada y donde se colocará la imagen
+    width: dimensiones_imagenes.alumno.ancho,
+    height: dimensiones_imagenes.alumno.alto,
+    });
+
+
+// Titulos de los Plots
+    page.drawText(encabezado, {
+        x: 50,
+        y: fontSize + Toffset,
+        size: fontSize,
+        color: PDFLib.rgb(0,0,0),
+        font: await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold),
+    });
+
+    page.drawLine({
+       start: { x: 50, y: fontSize - 2 + Toffset },
+       end: { x: 50 + textWidth + 5, y: fontSize - 2 + Toffset},
+       thickness: 1,
+       color: PDFLib.rgb(0, 0, 0), // Puedes ajustar el color del subrayado si lo deseas
+    });
+
+    page.drawText(titulo0, {
+        x: 50,
+        y: fontSize + Toffset0,
+        size: fontSize,
+        color: PDFLib.rgb(0,0,0),
+        
+    });
+
+    page.drawLine({
+       start: { x: 50, y: fontSize - 2 + Toffset0 },
+       end: { x: 50 + textWidth0, y: fontSize - 2 + Toffset0},
+       thickness: 1,
+       color: PDFLib.rgb(0, 0, 0), // Puedes ajustar el color del subrayado si lo deseas
+    });
+
+    page.drawText(titulog1, {
+        x: 50,
+        y: fontSize + T1offset,
+        size: fontSize,
+        color: PDFLib.rgb(0,0,0),
+    });
+
+    page.drawLine({
+       start: { x: 50, y: fontSize - 2 + T1offset },
+       end: { x: 50 + textWidth1, y: fontSize - 2 + T1offset},
+       thickness: 1,
+       color: PDFLib.rgb(0, 0, 0), // Puedes ajustar el color del subrayado si lo deseas
+    });
+
+    page.drawText(titulog2, {
+        x: 320,
+        y: fontSize + T2offset,
+        size: fontSize,
+        color: PDFLib.rgb(0,0,0),
+    });
+
+    page.drawLine({
+       start: { x: 320, y: fontSize - 2 + T2offset },
+       end: { x: 320 + textWidth2, y: fontSize - 2 + T2offset},
+       thickness: 1,
+       color: PDFLib.rgb(0, 0, 0), // Puedes ajustar el color del subrayado si lo deseas
+    });
+
+      page.drawText(titulog3, {
+        x: 50,
+        y: fontSize + T3offset,
+        size: fontSize,
+        color: PDFLib.rgb(0,0,0),
+    });
+
+    page.drawLine({
+       start: { x: 50, y: fontSize - 2 + T3offset },
+       end: { x: 50 + textWidth3, y: fontSize - 2 + T3offset},
+       thickness: 1,
+       color: PDFLib.rgb(0, 0, 0), // Puedes ajustar el color del subrayado si lo deseas
+    });
+    
+    page.drawText(titulog4, {
+        x: 320,
+        y: fontSize + T4offset,
+        size: fontSize,
+        color: PDFLib.rgb(0,0,0),
+    });
+
+    page.drawLine({
+       start: { x: 320, y: fontSize - 2 + T4offset },
+       end: { x: 320 + textWidth4, y: fontSize - 2 + T4offset},
+       thickness: 1,
+       color: PDFLib.rgb(0, 0, 0), // Puedes ajustar el color del subrayado si lo deseas
+    });
+
+   let fechactual = new Date();
+ //Obtener cada parte de la fecha (día, mes, año, hora, minutos, segundos)
+   let dia = fechactual.getDate();
+   let mes = fechactual.getMonth() + 1; // Los meses comienzan desde 0, por eso se suma 1
+   let anio = fechactual.getFullYear();
+   let horas = fechactual.getHours();
+   let minutos = fechactual.getMinutes();
+   let segundos = fechactual.getSeconds();
+
+  // Formatear la fecha como una cadena de texto legible
+   let fechaTexto = `${dia}/${mes}/${anio}`;
+    
+    page.drawText(fechaTexto, {
+        x: 450,
+        y: height -60,
+        size: fontSize,
+        color: PDFLib.rgb(0,0,0),
+    });
+
+    const pdfBytes = await pdfDoc.save();
+
+    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = 'reporte_pdf.pdf';
+    link.click();
+
+    /* Descargar imagen PNG*/
+    /* const data = canvas.toDataURL("image/png;base64");
+    const donwloadLink = document.querySelector("#download_report");
+    donwloadLink.download = filename;
+    donwloadLink.href = data; */
+}
+
+</script>
+
+{{#setactive}}
+    {{> local_edwiserreports/setactivenav }}
+{{/setactive}}

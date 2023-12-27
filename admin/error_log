@@ -1,0 +1,24 @@
+[07-Nov-2023 15:39:28 America/Santiago] Default exception handler: Detectado un error de codificación, debe ser corregido por un programador: Invalid table name {block_myprogress_course_progress}: name is too long. Limit is 28 chars. Debug: 
+Error code: codingerror
+* line 289 of /lib/ddl/sql_generator.php: coding_exception thrown
+* line 226 of /lib/ddl/mysql_sql_generator.php: call to sql_generator->getCreateTableSQL()
+* line 250 of /lib/ddl/sql_generator.php: call to mysql_sql_generator->getCreateTableSQL()
+* line 417 of /lib/ddl/database_manager.php: call to sql_generator->getCreateStructureSQL()
+* line 372 of /lib/ddl/database_manager.php: call to database_manager->install_from_xmldb_structure()
+* line 1093 of /lib/upgradelib.php: call to database_manager->install_from_xmldb_file()
+* line 689 of /lib/upgradelib.php: call to upgrade_plugins_blocks()
+* line 1974 of /lib/upgradelib.php: call to upgrade_plugins()
+* line 726 of /admin/index.php: call to upgrade_noncore()
+
+[07-Nov-2023 16:10:20 America/Santiago] Default exception handler: Detectado un error de codificación, debe ser corregido por un programador: Invalid table name {block_myprogress_course_progress}: name is too long. Limit is 28 chars. Debug: 
+Error code: codingerror
+* line 289 of /lib/ddl/sql_generator.php: coding_exception thrown
+* line 226 of /lib/ddl/mysql_sql_generator.php: call to sql_generator->getCreateTableSQL()
+* line 250 of /lib/ddl/sql_generator.php: call to mysql_sql_generator->getCreateTableSQL()
+* line 417 of /lib/ddl/database_manager.php: call to sql_generator->getCreateStructureSQL()
+* line 372 of /lib/ddl/database_manager.php: call to database_manager->install_from_xmldb_structure()
+* line 1093 of /lib/upgradelib.php: call to database_manager->install_from_xmldb_file()
+* line 689 of /lib/upgradelib.php: call to upgrade_plugins_blocks()
+* line 1974 of /lib/upgradelib.php: call to upgrade_plugins()
+* line 726 of /admin/index.php: call to upgrade_noncore()
+

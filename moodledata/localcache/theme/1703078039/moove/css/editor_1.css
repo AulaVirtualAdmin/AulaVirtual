@@ -1,0 +1,25 @@
+body.mce-content-body {
+    margin: revert;
+    text-align: initial;
+}
+
+/** Web Accessibility - color contrast. */
+body.mce-content-body a[data-mce-selected="inline-boundary"] {
+    background-color: unset;
+}
+body.mce-content-body a {
+    color: #0f6cbf;
+}
+/** */
+.mce-content-body .h5p-placeholder + br {
+    display: none;
+}
+.mce-content-body .h5p-placeholder {
+    color: #6c757d;
+    width: 100%;
+    word-break: break-all;
+    height: 260px;
+    cursor: pointer;
+    background: url(/theme/image.php/moove/tiny_h5p/1703078039/icon-white) center center / 100px auto no-repeat #6c757d;
+}
+

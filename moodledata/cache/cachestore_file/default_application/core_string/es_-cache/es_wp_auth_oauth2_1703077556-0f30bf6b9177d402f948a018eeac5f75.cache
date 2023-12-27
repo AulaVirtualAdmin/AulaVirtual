@@ -1,0 +1,49 @@
+a:51:{s:13:"accountexists";s:231:"Ya existe un usuario en este sitio con ese nombre de usuario. Si esta es su cuenta inicie sesión utilizando su nombre de usuario y contraseña y añádalo como un inicio de sesión enlazado a través de su página de preferencias.";s:22:"auth_oauth2description";s:44:"Autenticación basada en estándares OAuth 2";s:19:"auth_oauth2settings";s:34:"Ajustes de autenticación OAuth 2.";s:19:"confirmaccountemail";s:686:"Hola, {$a->fullname}:
+
+Se ha solicitado una nueva cuenta en '{$a->sitename}'
+utilizando su dirección de correo electrónico.
+
+Para confirmar su nueva cuenta, vaya a esta dirección web:
+
+{$a->link}
+
+En la mayoría de los programas de correo, esto debería aparecer como un enlace azul.
+en el que puede hacer clic. Si eso no funciona,
+corte y pegue la dirección en la barra de navegación
+en la parte superior de la ventana de su navegador web.
+
+Si necesita ayuda, póngase en contacto con el administrador del sitio,
+{$a->admin}
+
+Si usted no hizo esto, alguien más podría estar intentando poner en peligro su cuenta.
+Póngase en contacto con el administrador del sitio de inmediato.";s:26:"confirmaccountemailsubject";s:29:"{$a}: confirmación de cuenta";s:19:"confirmationinvalid";s:164:"El enlace de confirmación no es válido o ha caducado. Vuelva a iniciar el proceso de inicio de sesión para generar un nuevo correo electrónico de confirmación.";s:19:"confirmationpending";s:69:"Esta cuenta está pendiente de confirmación por correo electrónico.";s:23:"confirmlinkedloginemail";s:801:"Hola, {$a->fullname}:
+
+Se ha realizado una solicitud para vincular el inicio de sesión de {$a->issuername}
+{$a->linkedemail} a su cuenta en '{$a->sitename}'
+utilizando su dirección de correo electrónico.
+
+Para confirmar esta solicitud y vincular estos inicios de sesión, vaya a esta dirección web:
+
+{$a->link}
+
+En la mayoría de los programas de correo, esto debería aparecer como un enlace azul
+en el que puede hacer clic. Si eso no funciona,
+corte y pegue la dirección en la barra de navegación
+en la parte superior de la ventana de su navegador web.
+
+Si necesita ayuda, póngase en contacto con el administrador del sitio,
+{$a->admin}
+
+Si usted no hizo esto, alguien más podría estar intentando poner en peligro su cuenta.
+Póngase en contacto con el administrador del sitio de inmediato.";s:30:"confirmlinkedloginemailsubject";s:50:"{$a}: confirmación de inicio de sesión vinculado";s:21:"createaccountswarning";s:191:"Este complemento de autenticación permite a los usuarios crear cuentas en su sitio. Es posible que desee habilitar la configuración "authpreventaccountcreation" si utiliza este complemento.";s:20:"createnewlinkedlogin";s:32:"Vincular una nueva cuenta ({$a})";s:16:"emailconfirmlink";s:20:"Vincular sus cuentas";s:20:"emailconfirmlinksent";s:450:"<p>Se encontró una cuenta existente con esta dirección de correo electrónico, pero aún no está vinculada.</p>
+    <p>Las cuentas deben estar vinculadas antes de que pueda iniciar sesión.</p>
+    <p>Debería haberse enviado un correo electrónico a su dirección en <b>{$a}</b>.</p>
+    <p>Contiene instrucciones sencillas para vincular sus cuentas.</p>
+    <p>Si tiene alguna dificultad, póngase en contacto con el administrador del sitio.</p>";s:23:"emailpasswordchangeinfo";s:345:"Hola, {$a->firstname}:
+
+Alguien (probablemente usted) ha solicitado una nueva contraseña para su cuenta en '{$a->sitename}'.
+
+Sin embargo, su contraseña no se puede restablecer porque está utilizando su cuenta en otro sitio para iniciar sesión.
+
+Inicie sesión como antes, utilizando el enlace de la página de inicio de sesión.
+{$a->admin}";s:30:"emailpasswordchangeinfosubject";s:47:"{$a}: Información sobre cambiar la contraseña";s:4:"info";s:14:"Cuenta externa";s:6:"issuer";s:16:"Servicio OAuth 2";s:13:"issuernologin";s:50:"El emisor no puede utilizarse para iniciar sesión";s:3:"key";s:5:"Clave";s:12:"linkedlogins";s:29:"Inicios de sesión vinculados";s:16:"linkedloginshelp";s:39:"Ayuda con inicios de sesión vinculados";s:8:"loggedin";s:55:"El usuario se autenticó exitosamente con el proveedor.";s:25:"loginerror_userincomplete";s:174:"La información de usuario devuelta no contenía nombre de usuario ni dirección de correo electrónico. Es posible que el servicio OAuth 2 esté configurado incorrectamente.";s:21:"loginerror_nouserinfo";s:110:"No se devolvió información de usuario. Es posible que el servicio OAuth 2 esté configurado incorrectamente.";s:24:"loginerror_invaliddomain";s:65:"La dirección de correo electrónico no se permite en este sitio.";s:31:"loginerror_authenticationfailed";s:36:"El proceso de autenticación falló.";s:31:"loginerror_cannotcreateaccounts";s:73:"No se pudo encontrar una cuenta con su dirección de correo electrónico.";s:16:"noconfiguredidps";s:39:"No hay proveedores OAuth2 configurados.";s:18:"noissuersavailable";s:96:"Ninguno de los servicios de OAuth2 configurados le permite vincular cuentas de inicio de sesión";s:16:"notloggedindebug";s:52:"El intento de inicio de sesión falló. Motivo: {$a}";s:18:"notwhileloggedinas";s:104:"Los inicios de sesión vinculados no puede gestionarse mientras haya iniciado sesión como otro usuario.";s:25:"oauth2:managelinkedlogins";s:63:"Administrar sus propias cuentas de inicio de sesión vinculadas";s:10:"notenabled";s:68:"Lo sentimos, el plugin de autenticación OAuth 2 no está habilitado";s:17:"plugindescription";s:261:"Este complemento de autenticación muestra una lista de los proveedores de identidad configurados en la página de inicio de sesión. La selección de un proveedor de identidad permite a los usuarios iniciar sesión con sus credenciales de un proveedor OAuth 2.";s:10:"pluginname";s:7:"OAuth 2";s:13:"alreadylinked";s:66:"Esta cuanta externa ya está enlazada con una cuenta en este sitio";s:28:"privacy:metadata:auth_oauth2";s:22:"Autenticación OAuth 2";s:42:"privacy:metadata:auth_oauth2:authsubsystem";s:65:"Este complemento está conectado al subsistema de autenticación.";s:41:"privacy:metadata:auth_oauth2:confirmtoken";s:26:"El token de confirmación.";s:48:"privacy:metadata:auth_oauth2:confirmtokenexpires";s:70:"La marca de tiempo que indica cuando caduca el token de confirmación.";s:34:"privacy:metadata:auth_oauth2:email";s:59:"El correo electrónico externo que se asigna a esta cuenta.";s:37:"privacy:metadata:auth_oauth2:issuerid";s:63:"El ID del emisor de OAuth 2 para este inicio de sesión OAuth 2";s:45:"privacy:metadata:auth_oauth2:tableexplanation";s:61:"Cuentas OAuth 2 vinculadas a una cuenta de usuario de Moodle.";s:40:"privacy:metadata:auth_oauth2:timecreated";s:99:"La marca de tiempo que indica cuando se vinculó la cuenta de usuario al inicio de sesión OAuth 2.";s:41:"privacy:metadata:auth_oauth2:timemodified";s:64:"La marca de tiempo que indica cuando se modificó este registro.";s:35:"privacy:metadata:auth_oauth2:userid";s:84:"El ID de la cuenta de usuario a la que está vinculado el inicio de sesión OAuth 2.";s:41:"privacy:metadata:auth_oauth2:usermodified";s:44:"El ID del usuario que modificó esta cuenta.";s:37:"privacy:metadata:auth_oauth2:username";s:56:"El nombre de usuario externo que se asigna a esta cuenta";s:12:"testidplogin";s:22:"Ingreso de prueba con:";s:8:"userinfo";s:37:"Datos del usuario desde el proveedor:";s:5:"value";s:5:"Valor";}

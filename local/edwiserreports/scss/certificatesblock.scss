@@ -1,0 +1,17 @@
+#wdm-edwiserreports {
+    #certificatestatsblock {
+        .panel-body {
+            min-height: 250px;
+        }
+    }
+}
+
+#certificates {
+    .table {
+        // width: 100% !important;
+        .pie-progress {
+            width: 40px;
+            margin: auto;
+        }
+    }
+}

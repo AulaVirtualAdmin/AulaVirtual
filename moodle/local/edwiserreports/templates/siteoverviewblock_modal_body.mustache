@@ -1,0 +1,42 @@
+<div class="siteoverview-modal-tables" data-date="{{date}}">
+    <ul class="nav nav-tabs">
+        {{#activeusers}}
+            <li class="nav-item">
+                <a data-target="activeusers" class="nav-link {{active}}" href="javascript:void(0)">{{#str}}activeusers, local_edwiserreports{{/str}}</a>
+            </li>
+        {{/activeusers}}
+        {{#enrolments}}
+            <li class="nav-item">
+                <a data-target="enrolments" class="nav-link {{active}}" href="javascript:void(0)">{{#str}} courseenrolments, local_edwiserreports {{/str}}</a>
+            </li>
+        {{/enrolments}}
+        {{#completions}}
+            <li class="nav-item">
+                <a data-target="completions" class="nav-link {{active}}" href="javascript:void(0)">{{#str}} coursecompletionrate, local_edwiserreports {{/str}}</a>
+            </li>
+        {{/completions}}
+    </ul>
+    <div class="tabs mt-2">
+        {{#activeusers}}
+            <div class="tab pb-2 {{active}}" data-id="activeusers">
+                <label class="text-center w-100 py-2">
+                    <i class="fa fa-circle-o-notch fa-spin"></i>
+                </label>
+            </div>
+        {{/activeusers}}
+        {{#enrolments}}
+            <div class="tab pb-2 {{active}}" data-id="enrolments">
+                <label class="text-center w-100 py-2">
+                    <i class="fa fa-circle-o-notch fa-spin"></i>
+                </label>
+            </div>
+        {{/enrolments}}
+        {{#completions}}
+            <div class="tab pb-2 {{active}}" data-id="completions">
+                <label class="text-center w-100 py-2">
+                    <i class="fa fa-circle-o-notch fa-spin"></i>
+                </label>
+            </div>
+        {{/completions}}
+    </div>
+</div>

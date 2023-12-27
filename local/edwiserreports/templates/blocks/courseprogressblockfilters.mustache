@@ -1,0 +1,16 @@
+<div class="row">
+    {{# cohort }}
+        <div class="filter-selector col-12 col-md-6 mb-1">
+            <label>{{#str}} cohort, local_edwiserreports {{/str}}</label>
+            {{> local_edwiserreports/filters/cohorts_filter }}
+        </div>
+    {{/ cohort }}
+    <div class="filter-selector col-12 col-md-6 mb-1">
+        <label>{{#str}} course, local_edwiserreports {{/str}}</label>
+        {{> local_edwiserreports/filters/courses_filter }}
+    </div>
+    <div class="filter-selector col-12 col-md-6 mb-1 {{^ groups }} d-none {{/ groups }}">
+        <label>{{#str}} group, local_edwiserreports {{/str}}</label>
+        {{> local_edwiserreports/filters/groups_filter }}
+    </div>
+</div>

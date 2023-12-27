@@ -1,0 +1,6 @@
+a:4:{s:18:"allowedsourceslist";s:30:"Orígenes (fuentes) permitidos";s:22:"allowedsourceslistdesc";s:428:"Una lista de URLs desde las cuales los usuarios pueden incrustar contenido H5P. Si ninguna estuviera especificada, todas las URLs permanecerán como enlaces y no serán mostradas como contenido H5P incrustado.
+
+'[id]' es un reemplazable para la ID del contenido H5P en el origen externo. Por ejemplo:
+
+- H5P.com: https://[xxxxxx].h5p.com/content/[id]
+- Wordpress: http://myserver/wp-admin/admin-ajax.php?action=h5p_embed&id=[id]";s:10:"filtername";s:11:"Mostrar H5P";s:16:"privacy:metadata";s:62:"El filtro para mostrar H5P no almacena ningún  dato personal.";}

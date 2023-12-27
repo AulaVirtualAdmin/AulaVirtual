@@ -1,0 +1,159 @@
+<?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+/**
+ * Reports block external apis
+ *
+ * @package     local_edwiserreports
+ * @copyright   2019 wisdmlabs <support@wisdmlabs.com>
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+namespace local_edwiserreports\external;
+
+defined('MOODLE_INTERNAL') || die();
+
+use external_function_parameters;
+use external_single_structure;
+use external_value;
+use moodle_url;
+use stdClass;
+use context_system;
+
+require_once($CFG->libdir.'/externallib.php');
+/**
+ * Trait implementing the external function local_edwiserreports_get_customreports_data.
+ */
+trait get_customreports_list {
+
+    /**
+     * Describes the structure of parameters for the function.
+     *
+     * @return external_function_parameters
+     */
+    public static function get_customreports_list_parameters() {
+        return new external_function_parameters(
+            array (
+                'params' => new external_value(PARAM_RAW, 'Prameters', 'local_edwiserreports')
+            )
+        );
+    }
+
+    /**
+     * Get Custom Reports data
+     *
+     * @param  string $params Plugin name
+     * @return object             Configurations
+     */
+    public static function get_customreports_list($params) {
+        global $DB;
+        $table = 'edwreports_custom_reports';
+        $data = array();
+        $dir = get_string('thisdirection', 'langconfig');
+        $rtl = $rtl ? $rtl : ($dir == 'rtl' ? 1 : 0);
+
+        $sql = 'SELECT ecr.*, u.firstname, u.lastname
+                FROM {edwreports_custom_reports} ecr
+                JOIN {user} u
+                ON u.id = ecr.createdby';
+        $customreports = $DB->get_records_sql($sql);
+        foreach ($customreports as $customreport) {
+            $crdata = new stdClass();
+            $crdata->fullname = $customreport->fullname;
+            $crdata->createdby = $customreport->firstname . ' ' . $customreport->lastname;
+            $crdata->datecreated = $rtl ? date('Y-m-d', $customreport->timecreated) : date('d-m-Y', $customreport->timecreated);
+            $crdata->datemodified = $customreport->timemodified ? ($rtl ? date('Y-m-d', $customreport->timemodified) : date('d-m-Y', $customreport->timemodified)) : '-';
+            $crdata->managehtml = self::create_manage_html($customreport);
+            $data[] = $crdata;
+        }
+
+        $response = array(
+            "success" => true,
+            "data" => json_encode($data)
+        );
+
+        return $response;
+    }
+
+    /**
+     * Create manage HTML for custom reports.
+     * @param [object] $customreport Custom Report Object
+     */
+    private static function create_manage_html($customreport) {
+        global $CFG;
+        $editurl = new moodle_url(
+            $CFG->wwwroot . '/local/edwiserreports/customreportedit.php',
+            array(
+                'id' => $customreport->id
+            )
+        );
+
+        $context = context_system::instance();
+        $contextid = $context->id;
+
+
+        $enabledesktop = $customreport->enabledesktop ? 'checked' : '';
+        $enabledesktopstr = get_string('enabledesktop', 'local_edwiserreports');
+        $disabledesktopstr = get_string('disabledesktop', 'local_edwiserreports');
+        $tooltipstr = $customreport->enabledesktop ? $disabledesktopstr : $enabledesktopstr;
+        $html = '<div>
+            <span>
+                <input type="checkbox" id="wdm-desktopenable-' . $customreport->id . '" class="d-none
+                custom-field-checkbox" ' . $enabledesktop . ' data-reportsid="' . $customreport->id . '"
+                >
+                <a href="' .$editurl. '"
+                    class = "p-1"
+                   data-toggle="tooltip" data-action="hide"
+                   title="' . $tooltipstr . '"
+                   data-titlehide="' . $enabledesktopstr . '"
+                   data-titleshow="' . $disabledesktopstr . '"
+                   data-value="' . $customreport->enabledesktop . '"
+                   data-target="#wdm-desktopenable-' . $customreport->id . '">
+                    <span class="show-svg">' . \local_edwiserreports\utility::image_icon('actions/show') . '</span>
+                    <span class="hide-svg">' . \local_edwiserreports\utility::image_icon('actions/hide') . '</span>
+                </a>
+                <a href="' .$editurl. '" data-toggle="tooltip"
+                class = "p-1"
+                title="' . get_string('editreports', 'local_edwiserreports') . '">
+                    <span class="edit-svg">' . \local_edwiserreports\utility::image_icon('actions/edit') . '</span>
+                </a>
+                <a href="#" data-toggle="tooltip" data-reportsid="' . $customreport->id . '"
+                class = "p-1"
+                title="' . get_string('deletereports', 'local_edwiserreports') . '" data-action="delete">
+                    <span class="delete-svg">' . \local_edwiserreports\utility::image_icon('actions/delete') . '</span>
+                </a>
+                
+                <a href="#" title="'.get_string('editcapability', 'local_edwiserreports').'" class="p-1 erp-custom-edit-settings" data-contextid="'. $contextid .'" data-blockname="' . 'customreportsblock-' . $customreport->id.'" data-action="editcap" >
+                    <i class="icon fa fa-cog fa-fw " aria-label="Actions menu" style="vertical-align:-3px; font-size:19px;color:black;"  ></i>
+                </a>
+            </span>
+        </div>';
+        return $html;
+    }
+
+    /**
+     * Describes the structure of the function return value.
+     *
+     * @return external_single_structure
+     */
+    public static function get_customreports_list_returns() {
+        return new external_single_structure(
+            array(
+                'success' => new external_value(PARAM_BOOL, 'Status', null),
+                'data' => new external_value(PARAM_RAW, 'Reports Data', 0)
+            )
+        );
+    }
+}
