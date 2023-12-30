@@ -18,8 +18,8 @@ $CFG->dboptions = array (
   'dbcollation' => 'utf8mb4_general_ci',
 );
 
-$CFG->wwwroot   = 'https://aulavirtual.relpro.cl';
-$CFG->dataroot  = '/home/wwaula/www/moodledata';
+$CFG->wwwroot   = 'https://dev-fernando-delva.aulavirtual.relpro.cl';
+$CFG->dataroot  = '/home/wwaula/www/subdomains/dev-fernando-delva';
 $CFG->admin     = 'admin';
 
 $CFG->directorypermissions = 0777;
