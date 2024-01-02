@@ -87,12 +87,12 @@
     </nav>
 {{/additional_items}}
 <script>
-    if (document.querySelector("div[role=main] .h5p-iframe").length > 0) {
-        if(document.querySelector(".activity-description").html() !== undefined) {
-            let descriptionHtml = document.querySelector(".activity-description").html();
+    if (document.querySelector(".h5p-iframe-wrapper") !== null) {
+        if(document.querySelector(".activity-description") !== null) {
+            let descriptionHtml = document.querySelector(".activity-description").outerHTML;
             document.querySelector(".activity-description").remove();
-            document.querySelector("#region-main").append(`<div class="m-3 pt-3 px-3 bg-light rounded">
-                document.querySelector{descriptionHtml}
+            document.querySelector("#region-main").insertAdjacentHTML('beforeend',`<div class="m-3 pt-3 px-3 bg-light rounded">
+                ${descriptionHtml}
             </div>`);
         }
     }
