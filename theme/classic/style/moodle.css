@@ -17517,6 +17517,10 @@ input[type=button].btn-block {
   padding: 1.25rem;
 }
 
+.min-h-180{
+  min-height: 180px;
+}
+
 .card-title {
   margin-bottom: 0.75rem;
 }
