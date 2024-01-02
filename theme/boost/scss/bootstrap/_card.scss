@@ -53,6 +53,10 @@
   color: $card-color;
 }
 
+.min-h-180{
+  min-height: 180px;
+}
+
 .card-title {
   margin-bottom: $card-spacer-y;
 }
