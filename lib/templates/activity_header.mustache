@@ -92,7 +92,7 @@
             if(document.querySelector(".activity-description") !== null) {
                 let descriptionHtml = document.querySelector(".activity-description").outerHTML;
                 document.querySelector(".activity-description").remove();
-                document.querySelector("#region-main").insertAdjacentHTML('beforeend',`<div class="m-3 pt-3 px-3 bg-light rounded">
+                document.querySelector("#region-main").insertAdjacentHTML('beforeend',`<div class="m-3 px-3 bg-light rounded">
                     ${descriptionHtml}
                 </div>`);
             }
