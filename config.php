@@ -18,7 +18,7 @@ $CFG->dboptions = array (
   'dbcollation' => 'utf8mb4_general_ci',
 );
 
-$CFG->wwwroot   = 'https://aulavirtual.relpro.cl/subdomains/dev/';
+$CFG->wwwroot   = 'https://aulavirtual.relpro.cl/subdomains/dev';
 $CFG->dataroot  = '/home/wwaula/www/subdomains/dev/moodledata';
 //$CFG->wwwroot   = 'https://aulavirtual.relpro.cl';
 //$CFG->dataroot  = '/home/wwaula/www/moodledata';
