@@ -87,14 +87,13 @@
     </nav>
 {{/additional_items}}
 <script>
-    
-        if ($("div[role=main] .h5p-iframe").length > 0) {
-            if($(".activity-description").html() !== undefined) {
-                let descriptionHtml = $(".activity-description").html();
-                $(".activity-description").remove();
-                $("#region-main").append(`<div class="m-3 pt-3 px-3 bg-light rounded">
-                    ${descriptionHtml}
-                </div>`);
-            }
+    if (document.querySelector("div[role=main] .h5p-iframe").length > 0) {
+        if(document.querySelector(".activity-description").html() !== undefined) {
+            let descriptionHtml = document.querySelector(".activity-description").html();
+            document.querySelector(".activity-description").remove();
+            document.querySelector("#region-main").append(`<div class="m-3 pt-3 px-3 bg-light rounded">
+                document.querySelector{descriptionHtml}
+            </div>`);
         }
+    }
 </script>
