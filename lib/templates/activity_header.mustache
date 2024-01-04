@@ -107,47 +107,42 @@
                     switch(hrefExt){
                         case 'pdf':
                         ele.classList.add('btn-outline-danger');
-                        ele.innerHTML = ele.innerHTML.trim() + ` <i class="fas fa-file-pdf"></i>`;
+                        ele.innerHTML += ` <i class="fas fa-file-pdf"></i>`;
                         break
                     case 'docx':
                     case 'doc':
-                        ele.classList.add('fa-file-word');
                         ele.classList.add('btn-outline-primary');
-                        ele.innerHTML = ele.innerHTML.trim() + ` <i class="fas fa-file-word"></i>`;
+                        ele.innerHTML += ` <i class="fas fa-file-word"></i>`;
                         break;
                     case 'xlsx':
                     case 'xls':
-                        ele.classList.add('fa-file-excel');
                         ele.classList.add('btn-outline-success');
-                        ele.innerHTML = ele.innerHTML.trim() + ` <i class="fas fa-file-excel"></i>`;
+                        ele.innerHTML += ` <i class="fas fa-file-excel"></i>`;
                         break;
                     case 'pptx':
                     case 'ppt':
-                        ele.classList.add('fa-file-powerpoint');
                         ele.classList.add('btn-outline-warning');
-                        ele.innerHTML = ele.innerHTML.trim() + ` <i class="fas fa-file-powerpoint"></i>`;
+                        ele.innerHTML += ` <i class="fas fa-file-powerpoint"></i>`;
                         break;
                     case 'zip':
                     case 'rar':
                     case '7z':
-                        ele.classList.add('fa-file-archive');
                         ele.classList.add('btn-outline-info');
-                        ele.innerHTML = ele.innerHTML.trim() + ` <i class="fas fa-file-archive"></i>`;
+                        ele.innerHTML += ` <i class="fas fa-file-archive"></i>`;
                         break;
                     case 'jpg':
                     case 'jpeg':
                     case 'png':
                     case 'gif':
                     case 'svg':
-                        ele.classList.add('fa-file-image');
                         ele.classList.add('btn-light');
                         ele.classList.add('border');
-                        ele.innerHTML = ele.innerHTML.trim() + ` <i class="fas fa-file-image text-primary"></i>`;
+                        ele.innerHTML += ` <i class="fas fa-file-image text-primary"></i>`;
                         break;
                     default:
                             ele.classList.add('btn-link');
                             ele.classList.add('border');
-                            ele.innerHTML = ele.innerHTML.trim() + ` <i class="fas fa-link"></i>`;
+                            ele.innerHTML += ` <i class="fas fa-link"></i>`;
                         break;
                     }
                 });
