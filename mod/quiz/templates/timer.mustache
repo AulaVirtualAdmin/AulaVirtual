@@ -31,12 +31,16 @@
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        if(document.querySelector('#quiz-timer-wrapper')) {
-            window.addEventListener('mouseout', function (e) {
-                if (event.toElement === null && event.relatedTarget === null) {
-                    alert('Por favor, no salga de la página mientras realiza el cuestionario.');
+        if(document.querySelector('#quiz-timer-wrapper') != null) {
+            if(document.querySelector('#quiz-time-left') != null) {
+                if(document.querySelector('#quiz-time-left').innerHTML != "") {
+                    window.addEventListener('mouseout', function (e) {
+                        if (event.toElement === null && event.relatedTarget === null) {
+                            alert('Por favor, no salga de la página mientras realiza el cuestionario.');
+                        }
+                    });
                 }
-            });
+            }
         }
     });
 </script>
