@@ -30,9 +30,13 @@
     </div>
 </div>
 <script>
-    window.addEventListener('mouseout', function(event) {
-        if (event.toElement === null && event.relatedTarget === null) {
-            alert('Por favor, no salga de la página mientras realiza el cuestionario.');
+    document.addEventListener("DOMContentLoaded", () => {
+        if(document.querySelector('#quiz-timer-wrapper')) {
+            window.addEventListener('mouseout', function (e) {
+                if (event.toElement === null && event.relatedTarget === null) {
+                    alert('Por favor, no salga de la página mientras realiza el cuestionario.');
+                }
+            });
         }
     });
 </script>
