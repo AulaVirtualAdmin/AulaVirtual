@@ -31,15 +31,23 @@
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
+        console.log("DOM fully loaded and parsed");
         if(document.querySelector('#quiz-timer-wrapper') != null) {
+            console.log("Timer wrapper exists");
             if(document.querySelector('#quiz-time-left') != null) {
+                console.log("Timer exists");
                 if(document.querySelector('#quiz-time-left').innerHTML != "") {
+                    console.log("Timer has value");
                     window.addEventListener('mouseout', function (e) {
                         if (event.toElement === null && event.relatedTarget === null) {
                             alert('Por favor, no salga de la página mientras realiza el cuestionario.');
                         }
                     });
                 }
+            }
+            //if #quiz-time-wrapper has style display flex then console.log("Timer exists")
+            if(document.querySelector('#quiz-timer-wrapper').style.display == "flex") {
+                console.log("Timer exists");
             }
         }
     });
